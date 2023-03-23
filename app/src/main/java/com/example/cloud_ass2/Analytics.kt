@@ -61,13 +61,13 @@ class Analytics {
         val durationInSeconds = duration / 1000
         val firestore = FirebaseFirestore.getInstance()
         val docRef = firestore.collection("time_spent").document(screenName)
-            docRef.get().addOnSuccessListener { documentSnapshot ->
-                if (documentSnapshot.exists()) {
-                    val existingDuration = documentSnapshot.getLong("duration") ?: 0
-                    docRef.update("duration", existingDuration + durationInSeconds)
-                } else {
-                    docRef.set(mapOf("screenName" to screenName, "duration" to durationInSeconds))
-                }
+        docRef.get().addOnSuccessListener { documentSnapshot ->
+            if (documentSnapshot.exists()) {
+                val existingDuration = documentSnapshot.getLong("duration") ?: 0
+                docRef.update("duration", existingDuration + durationInSeconds)
+            } else {
+                docRef.set(mapOf("screenName" to screenName, "duration" to durationInSeconds))
             }
+        }
     }
 }

@@ -14,26 +14,29 @@ import com.google.firebase.storage.FirebaseStorage
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.cat_card.view.*
 
-class CategoryAdapter(private val list: ArrayList<Category>, var context: Context) : RecyclerView.Adapter<CategoryAdapter.ViewHolder>(){
+class CategoryAdapter(private val list: ArrayList<Category>, var context: Context) :
+    RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
 
     private lateinit var mlistener: OnItemClickListener
 
-    fun onItemClickListener(listener: OnItemClickListener){
+    fun onItemClickListener(listener: OnItemClickListener) {
         mlistener = listener
     }
 
-    class ViewHolder (itemView: View, listener: OnItemClickListener):RecyclerView.ViewHolder(itemView) {
-        init{
-            itemView.setOnClickListener{
+    class ViewHolder(itemView: View, listener: OnItemClickListener) :
+        RecyclerView.ViewHolder(itemView) {
+        init {
+            itemView.setOnClickListener {
                 listener.onItemClick(adapterPosition)
             }
         }
+
         val name = itemView.catName
         val image = itemView.catImage
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.cat_card,parent,false)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.cat_card, parent, false)
         return ViewHolder(itemView, mlistener)
     }
 

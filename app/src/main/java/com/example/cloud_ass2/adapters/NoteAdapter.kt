@@ -11,26 +11,30 @@ import com.google.firebase.storage.FirebaseStorage
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.note_card.view.*
 
-class NoteAdapter(private val list: ArrayList<Note>, var context: Context) : RecyclerView.Adapter<NoteAdapter.ViewHolder>(){
+class NoteAdapter(private val list: ArrayList<Note>, var context: Context) :
+    RecyclerView.Adapter<NoteAdapter.ViewHolder>() {
 
     private lateinit var mlistener: OnItemClickListener
 
-    fun onItemClickListener(listener: OnItemClickListener){
+    fun onItemClickListener(listener: OnItemClickListener) {
         mlistener = listener
     }
 
-    class ViewHolder (itemView: View, listener: OnItemClickListener):RecyclerView.ViewHolder(itemView) {
-        init{
-            itemView.setOnClickListener{
+    class ViewHolder(itemView: View, listener: OnItemClickListener) :
+        RecyclerView.ViewHolder(itemView) {
+        init {
+            itemView.setOnClickListener {
                 listener.onItemClick(adapterPosition)
             }
         }
+
         val name = itemView.noteName
         val image = itemView.noteImage
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.note_card,parent,false)
+        val itemView =
+            LayoutInflater.from(parent.context).inflate(R.layout.note_card, parent, false)
         return ViewHolder(itemView, mlistener)
     }
 

@@ -14,7 +14,9 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.home.*
 
 class MainActivity : AppCompatActivity() {
+
     var analytics = Analytics()
+
     @SuppressLint("NotifyDataSetChanged")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,7 +70,11 @@ class MainActivity : AppCompatActivity() {
 
         myAdapter.onItemClickListener(object : CategoryAdapter.OnItemClickListener {
             override fun onItemClick(position: Int) {
-                analytics.selectContent("category${categories[position].id}", "${categories[position].name!!}", "CategoryCard")
+                analytics.selectContent(
+                    "category${categories[position].id}",
+                    "${categories[position].name!!}",
+                    "CategoryCard"
+                )
                 val intent = Intent(this@MainActivity, MainActivity2::class.java)
                 intent.putExtra("catId", categories[position].id)
                 intent.putExtra("catName", categories[position].name)

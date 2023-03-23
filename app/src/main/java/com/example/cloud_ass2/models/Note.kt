@@ -3,12 +3,14 @@ package com.example.cloud_ass2.models
 import android.os.Parcel
 import android.os.Parcelable
 
-class Note (var id: Int,
-            var name: String? = null,
-            var description: String? = null,
-            var letters: Int? = 0,
-            var image: String? = null,
-            var cat_id: Int? = 0): Parcelable {
+class Note(
+    var id: Int,
+    var name: String? = null,
+    var description: String? = null,
+    var letters: Int? = 0,
+    var image: String? = null,
+    var cat_id: Int? = 0
+) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readInt(),
         parcel.readString(),

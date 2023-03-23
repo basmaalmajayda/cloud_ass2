@@ -38,11 +38,12 @@ class MainActivity3 : AppCompatActivity() {
             myNoteImage.visibility = View.VISIBLE
             progressBar3.visibility = View.GONE
             Log.e("success", "get image successfully")
-        }.addOnFailureListener { exception->
+        }.addOnFailureListener { exception ->
             Log.e("error", "Error getting documents.", exception)
             Toast.makeText(this, "There is an error getting the image", Toast.LENGTH_SHORT)
         }
-        }
+    }
+
     override fun onResume() {
         super.onResume()
         //start
@@ -54,4 +55,4 @@ class MainActivity3 : AppCompatActivity() {
         //end
         analytics.trackScreenDuration()
     }
-    }
+}

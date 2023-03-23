@@ -15,6 +15,7 @@ import kotlinx.android.synthetic.main.notes.*
 
 class MainActivity2 : AppCompatActivity() {
     var analytics = Analytics()
+
     @SuppressLint("NotifyDataSetChanged")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,7 +77,11 @@ class MainActivity2 : AppCompatActivity() {
 
         myAdapter.onItemClickListener(object : NoteAdapter.OnItemClickListener {
             override fun onItemClick(position: Int) {
-                analytics.selectContent("note${notes[position].id}", "${notes[position].name!!}", "NoteCard")
+                analytics.selectContent(
+                    "note${notes[position].id}",
+                    "${notes[position].name!!}",
+                    "NoteCard"
+                )
                 val intent = Intent(this@MainActivity2, MainActivity3::class.java)
                 intent.putExtra("note", notes[position])
                 startActivity(intent)
@@ -84,6 +89,7 @@ class MainActivity2 : AppCompatActivity() {
         })
 
     }
+
     override fun onResume() {
         super.onResume()
         //start
