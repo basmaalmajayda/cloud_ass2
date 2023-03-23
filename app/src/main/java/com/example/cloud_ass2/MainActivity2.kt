@@ -87,7 +87,6 @@ class MainActivity2 : AppCompatActivity() {
                 startActivity(intent)
             }
         })
-
     }
 
     override fun onResume() {
